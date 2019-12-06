@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stopwatch</title>    
+<style>
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            padding: 0px;
+            margin: 0px;
+            background-color: rgb(242, 245, 237);
+        }
+
+        .outer-div{
+            width: 30%;
+            height: 455px;
+            margin: 0 auto;
+            margin-top: 100px;
+            border: 2px solid rgb(226, 226, 208);
+            background-color: rgb(232, 236, 236);
+            box-shadow: 3px 3px darkgray;
+        }
+
+        h1{
+            text-align: center;
+            font-family: cursive;
+        }
+
+        #circle-div{
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            border: 10px solid yellowgreen;
+            border-radius: 50%;
+        }
+
+        #three-display{
+            width: 60%;
+            height: 50px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 40%;
+        }
+
+        #minute-counter-box , #second-counter-box, #milli-counter-box{
+            width: 30%;
+            height: 100%;
+            font-size: 30px;
+            padding: 5px;
+            font-weight: bold;
+            float: left;
+            padding-left: 9px;
+        }
+
+        #colon{
+            width: 5%;
+            height: 100%;
+            padding-top: 2px;
+            font-size: 30px;
+            font-weight: bold;
+            float: left;
+        }
+        
+
+        #div-btns{
+                width: 70%;
+                height: 60px;
+                margin: 0 auto;
+                padding: 15px;
+            }
+
+            .btn{
+                width: 30%;
+                height: 35px;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-left: 36px;
+            }
+
+            .crtime-div{
+                width: 21%;
+                margin: 0 auto;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .btn:hover{
+                width: 30%;
+                height: 35px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                margin-left: 40px;
+            }
+
+            .btn:focus{
+                width: 30%;
+                height: 35px;
+                border-radius: 5px;
+                cursor: pointer;
+                outline: none;
+                font-weight: bold;
+                margin-left: 40px;
+            }
+    </style>
+</head>
+<body>
+    <div class="outer-div">
+        <h1>Stopwatch</h1>
+        <div id="circle-div">
+           <div id="three-display">
+              <div id="minute-counter-box"><span id="minute">00</span></div>
+              <div id="colon">:</div>
+              <div id="second-counter-box"><span id="second">00</span></div>
+              <div id="colon">:</div>
+              <div id="milli-counter-box"><span id="milli">00</span></div>
+            </div>
+        </div> 
+        
+        <div id="div-btns">
+                <button class="btn">Start</button>
+                <button class="btn">Reset</button>
+        </div>
+
+        </div>
+
+    </div>
+
+
+  <script>
+  
+        var start_btn = document.getElementsByClassName("btn")[0];
+        var minute_display = document.getElementById("minute").innerHTML;
+        var second_display = document.getElementById("second").innerHTML;
+        var milli_display = document.getElementById("milli").innerHTML;
+        
+        start_btn.onclick = function()
+                                {
+                                 if(start_btn.innerHTML == "Start")
+                                    {
+                                     start_btn.innerHTML = "Stop";
+                                     var milli_caller = setInterval(milli_increment , 10);
+                                    }
+                                 else
+                                    {
+                                     start_btn.innerHTML = "Start";
+                                     start_btn.onclick = clearInterval(milli_increment);
+                                    }
+                                }
+
+        function milli_increment()
+        {
+            var a = document.getElementById("milli");
+            var b = Number(document.getElementById("milli").innerHTML);
+            if(b<99)
+                {
+                a.innerHTML = b + 1;
+                }
+            else
+                {
+                b = 0;
+                a.innerHTML = b + 1; 
+                }
+        }
+  
+  </script>
+   
+</body>
+</html>
